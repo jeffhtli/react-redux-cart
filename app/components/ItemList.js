@@ -3,9 +3,9 @@ import Item from './Item.js'
 
 export default class ItemList extends React.Component {
   render() {
-    let { productList, changeTotal} = this.props;
-    let node = productList.map((product, index) => {
-      return (<Item product={product} changeTotal = {changeTotal} key={index} />);
+    let { productList, increase, decrease } = this.props;
+    let node = productList.map((product) => {
+      return (<Item product={product} key={product.id} increase={increase} decrease={decrease} />);
     });
     return (<div>{node}</div>);
   }

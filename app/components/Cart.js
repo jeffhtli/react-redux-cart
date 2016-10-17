@@ -1,23 +1,26 @@
 import React from 'react';
-import { connect } from 'react-redux'
-
 import ItemList from './ItemList.js';
 import Coupon from './Coupon.js';
 import numeral from 'numeral';
 
-class Cart extends React.Component {
+export default class Cart extends React.Component {
 
   render() {
-    let {discount, subtotal, changeTotal, changeDiscount} = this.props;
+    let { discount, changeDiscount} = this.props;
+    let subtotal = Cart.calcSubtotal(this.props.productList);
     return (
       <div>
-        <ItemList productList={this.productList} changeTotal={changeTotal.bind(this)} /><br/>
-        <Coupon changeDiscount={changeDiscount.bind(this)} /><br/>
+        <ItemList {...this.props} /><br/>
+        <Coupon changeDiscount={changeDiscount} /><br/>
         <div style={styleTotal}>Subtotal: ￥{numeral(subtotal).format('0.00')}</div><br/>
         <div style={styleTotal}>Discount: ￥{numeral(subtotal * discount).format('0.00')}</div><br/>
         <div style={styleTotal}>Total: ￥{numeral(subtotal - subtotal * discount).format('0.00')}</div>
       </div>
     );
+  }
+
+  static calcSubtotal(productList) {
+    return productList.reduce((accumulate, current) => (accumulate += current.price), 0);
   }
 }
 
@@ -27,5 +30,3 @@ var styleTotal = {
   textAlign: 'right',
   verticalAlign: 'middle'
 };
-
-export default connect()(Cart)

@@ -4,17 +4,17 @@ import numeral from 'numeral';
 export default class ItemList extends React.Component {
 
   render() {
-    let { product, sub, add, quantity} = this.props;
+    let { product, decrease, increase} = this.props;
     return (
       <div style={styleProduct}>
         <div style={styleName}>{product.name}</div>
         <div style={stylePrice}>￥{numeral(product.price).format('0.00')}</div>
         <div style={styleQuantity}>
-          <input type="button" value="-" onClick={sub.bind(this)} />
-          <span style={styleQuantityNum}>{quantity}</span>
-          <input type="button" value="+" onClick={add.bind(this)} />
+          <input type="button" value="-" onClick={() => decrease(product.id)} />
+          <span style={styleQuantityNum}>{product.quantity}</span>
+          <input type="button" value="+" onClick={() => increase(product.id)} />
         </div>
-        <div style={stylePrice}>￥{numeral(product.price * quantity).format('0.00')}</div>
+        <div style={stylePrice}>￥{numeral(product.price * product.quantity).format('0.00')}</div>
       </div>
     );
   }

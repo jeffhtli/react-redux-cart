@@ -1,23 +1,18 @@
 import React from 'react'
 import ReactDom from 'react-dom'
-import Cart from './components/Cart.js'
+import CartApp from './container/CartApp'
 
 import reducers from './reducers'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
 
+//let store = createStore(reducers);
 
-this.productList = [
-  {name: 'Kindle paperwhite', price: 998},
-  {name: 'Mi Note LTE', price: 899},
-  {name: '《You don\'t know JS》', price: 60}
-];
-
-let store = createStore(reducers);
+const store = createStore(reducers, window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__());
 
 ReactDom.render(
   <Provider store={store}>
-    <Cart />
+    <CartApp />
   </Provider>,
   document.getElementById('container')
 );
