@@ -1,0 +1,41 @@
+.total {
+    width: 800px;
+    display: table-cell;
+    text-align: right;
+    vertical-align: middle;
+}
+
+.product {
+    height: 50px;
+    width: 800px;
+    border-bottom: 1px solid grey
+}
+
+.name {
+    display: table-cell;
+    width: 400px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle
+}
+
+.quantity {
+    display: table-cell;
+    height: 50px;
+    width: 200px;
+    text-align: center;
+    vertical-align: middle
+}
+
+.quantity-num {
+    margin-left: 10px;
+    margin-right: 10px
+}
+
+.price {
+    display: table-cell;
+    height: 50px;
+    width: 100px;
+    vertical-align: middle
+}
+
