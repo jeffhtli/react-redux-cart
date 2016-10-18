@@ -1,6 +1,6 @@
 import React from 'react';
-import ItemList from './ItemList.js';
-import Coupon from './Coupon.js';
+import ItemList from './ItemList';
+import Coupon from './Coupon';
 import numeral from 'numeral';
 
 export default class Cart extends React.Component {
@@ -11,9 +11,11 @@ export default class Cart extends React.Component {
       <div>
         <ItemList {...this.props} /><br/>
         <Coupon changeDiscount={changeDiscount} /><br/>
-        <div className="total">Subtotal: ￥{numeral(subtotal).format('0.00')}</div><br/>
-        <div className="total">Discount: ￥{numeral(subtotal * discount).format('0.00')}</div><br/>
-        <div className="total">Total: ￥{numeral(subtotal - subtotal * discount).format('0.00')}</div>
+        <div className="total-container">
+          <div>Subtotal: ￥{numeral(subtotal).format('0.00')}</div><br/>
+          <div>Discount: ￥{numeral(subtotal * discount).format('0.00')}</div><br/>
+          <div>Total: ￥{numeral(subtotal - subtotal * discount).format('0.00')}</div>
+        </div>
       </div>
     );
   }
